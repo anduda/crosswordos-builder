@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Crosswordos</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <nav>
+            <a href="#home">Create new</a>
+            <div class="search-container">
+              <form action="/action_page.php">
+                <input type="text" placeholder="Find crosswords.." name="search">
+                <button type="submit">Find</button>
+              </form>
+            </div>
+            <a href="#home">Log out</a>
+        </nav>
+
+        <div class="main-window">
+            <div class="crossword">
+                <table>
+                    <tr>
+                        <td class="puzzle_cell"><b>1</b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"><b></b><input type="text" class="puzzle_cell_input" maxlength="1"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                        <td class="puzzle_cell"></td>
+                    </tr>
+                </table>
+                <div class="clues-window">
+                    <div class="clue">
+                    <h1 class="clue-header">Across</h1>
+                    <div class="questions">
+                        <div class="question">
+                            <span>1.</span>
+                            <p>long long question ever number xxx</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="clue" style="border-left: none;">
+                        <h1 class="clue-header">Down</h1>
+                        <div class="questions">
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                            <div class="question">
+                                <span>1.</span>
+                                <p>long long question ever number xxx</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <button class="save-button">Check</button>
+        </div>
+    </body>
+</html>
