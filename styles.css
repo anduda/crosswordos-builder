@@ -1,0 +1,270 @@
+*{
+    font-size: 2vh;
+}
+
+h1{
+    font-family: cursive;
+    height: 5%;
+}
+
+table {
+    font-family: 'Comfortaa', cursive;
+	color: #3d1718;
+    border-collapse: separate;
+    border-spacing: 3px;
+    background: black;
+    box-shadow: 0 10px 10px grey;
+    border-radius: 5px;
+    margin: 20px;
+    margin-left: 0px;
+}
+
+td {
+    background: lightgray;
+    width: 4vh;
+    height: 4vh;
+    border-radius: 3px;
+}
+
+td b {
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    font-size: 2vh;
+    color: #555;
+    margin: -2px auto auto 1px;
+}
+
+td input[type=text]{
+    text-align:center;
+    width:100%;
+    height: 100%;
+    border:none;
+    background:transparent;
+    font-size: 3vh;
+    margin-left: 0.5vh;
+    outline: none;
+}
+
+tr td:not(:empty){
+    background: white;
+}
+
+td:hover {
+	background: white;
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgb(7, 165, 118)
+}
+
+nav {
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    font-family: cursive;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: rgb(220, 106, 255);
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.search-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+nav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    border: none;
+}
+
+nav .search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: red;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button{
+    background-color: #000;
+    color: white;
+    width: 5vw;
+    height: 10vh;
+    border: none;
+    margin: auto;
+    box-shadow: 10px 10px 10px gray;
+}
+
+.save-button:hover{
+    background-color: white;
+    color: black;
+}
+
+nav .search-container button:hover {
+    background: #ccc;
+}
+
+.crossword{
+    display: flex;
+    justify-content: center;
+}
+
+
+.main-window{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sizes{
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.clues-window{
+    display: flex;
+    margin: 20px;
+}
+
+.clue{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    height: 90vh;
+}
+
+.questions{
+    height: 95%;
+    overflow-y: scroll;
+}
+
+.question{
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.question textarea{
+    width: 95%;
+    margin: 5px;
+    overflow: hidden;
+    overflow-wrap: break-word; 
+    resize: none;
+}
+
+.question p{
+    width: 95%;
+    margin: 5px;
+}
+
+.clue-header{
+    border-bottom:1px solid #000;
+}
+
+.questions span {
+    width: 5%;
+    cursor: default;
+    text-align: right;
+}
+
+label{
+    font-family: cursive;
+    font-size: xx-large;
+    text-shadow: 0px 10px 10px white;
+}
+
+.logreg-form{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 50vw;
+    margin: 25vh auto;
+    justify-content: space-around;
+    background-color: black;
+}
+
+.logreg-input{
+    height: 5vh;
+    width: 20vw;
+    margin: auto;
+}
+
+.logreg-button{
+    height: 5vh;
+    width: 20vw;
+    margin: auto;
+    background: red;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1300px){
+
+    *{
+        font-size: 2vw;
+    }
+    .main-window{
+        flex-direction: column;
+    }
+
+    .crossword{
+        flex-direction: column;
+    }
+
+    .questions{
+        overflow-y: auto;
+    }
+    
+    .clue{
+        width: 50vw;
+    }
+
+    td{
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .sizes{
+        width: auto;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    
+    td b {
+        font-size: 2vw;
+    }
+    
+    td input[type=text]{
+        font-size: 3vw;
+        margin-left: 0.5vw;
+    }
+
+    .save-button{
+        width: 10vw;
+        height: 5vh;
+    }
+}
