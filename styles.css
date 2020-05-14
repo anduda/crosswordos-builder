@@ -1,9 +1,9 @@
 *{
     font-size: 2vh;
+    font-family: cursive;
 }
 
 h1{
-    font-family: cursive;
     height: 5%;
 }
 
@@ -130,8 +130,11 @@ nav .search-container button:hover {
     justify-content: center;
 }
 
+#right{
+    border-left: none;
+}
 
-.main-window{
+main{
     display: flex;
     justify-content: space-between;
 }
@@ -203,14 +206,37 @@ label{
     width: 50vw;
     margin: 25vh auto;
     justify-content: space-around;
-    background-color: black;
+    background-color: #272E38;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5vh;
+    width: 20vw;
+    margin: auto;
+    border-bottom: 2px solid rgb(7, 165, 118);
+    background-color: transparent;
+}
+
+.input-wrapper:focus-within{
+    border-color: orange;
 }
 
 .logreg-input{
     height: 5vh;
-    width: 20vw;
     margin: auto;
+    border: none;
+    color: floralwhite;
+    background-color: transparent;
+    outline: none;
 }
+
+.logreg-input:hover::placeholder{
+        color: yellow;
+}
+
 
 .logreg-button{
     height: 5vh;
@@ -219,6 +245,42 @@ label{
     background: red;
     border: none;
     cursor: pointer;
+}
+
+.logreg-button:hover{
+    box-shadow: 2px 2px 2px rgb(7, 165, 118);
+}
+
+.logreg-button:active{
+    background-color: rgb(7, 165, 118);
+}
+
+.logreg-a{
+    color: white;
+    margin: auto;
+}
+
+.logreg-a:hover{
+    color: rgb(7, 165, 118);
+}
+
+.logreg-form .input-wrapper:before {
+    font-family: FontAwesome;
+    margin: auto;
+    font-size: 5vh;
+    color: rgb(7, 165, 118);
+  }
+
+.logreg-form .input-wrapper:nth-child(1):before {
+    content: "\f007";
+  }
+
+.logreg-form .input-wrapper:nth-child(2):before {
+    content: "\f023";
+}
+
+.logreg-form .input-wrapper:nth-child(3):before {
+    content: "\f023";
 }
 
 @media (max-width: 1300px){
