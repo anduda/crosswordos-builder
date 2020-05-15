@@ -214,7 +214,7 @@ label{
     flex-direction: row;
     justify-content: space-between;
     height: 5vh;
-    width: 50%;
+    width: 40%;
     margin: auto;
     border-bottom: 2px solid rgb(7, 165, 118);
     background-color: transparent;
@@ -240,7 +240,7 @@ label{
 
 .logreg-button{
     height: 5vh;
-    width: 50%;
+    width: 40%;
     margin: auto;
     background: red;
     border: none;
@@ -337,5 +337,13 @@ label{
 
     .logreg-form .input-wrapper:before {
         font-size: 5vw;
+    }
+
+    .input-wrapper{
+        width: 50%;
+    }
+
+    .logreg-button{
+        width: 50%;
     }
 }
