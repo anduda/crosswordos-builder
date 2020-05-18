@@ -312,7 +312,7 @@ label{
     .sizes{
         width: auto;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
     }
 
     
@@ -326,8 +326,10 @@ label{
     }
 
     .save-button{
-        width: 10vw;
-        height: 5vh;
+        order: -1;
+        margin-top: 10px;
+        width: 15vw;
+        height: 5vw;
     }
 
     .logreg-form{
