@@ -132,7 +132,7 @@ let Solver = {
 
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
-            elem.addEventListener("keypress", (e)=>
+            elem.addEventListener("input", (e)=>
             {
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);

@@ -253,26 +253,38 @@ let Builder = {
             }
         }
     },
+    charFlag: false,
+    oldTargetId: "",
 
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
-            elem.addEventListener("keypress", (e)=>
+            elem.addEventListener("keyup", (e)=>
             {
+                console.log(Builder.oldTargetId);
+                console.log(e.target.id);
+                if(Builder.oldTargetId != e.target.id || Builder.charFlag)
+                    return;
+                if (e.isComposing || e.keyCode === 229) {
+                return;
+                }
+                if(e.target.value.length > 1) {
+                    e.target.value = e.target.value.substring(0, 1);
+                  }
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
-                if(e.target.value.length == 0 && Builder.isLetter(String.fromCharCode(e.charCode)))
-                {
-                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = String.fromCharCode(e.charCode);
-                    Builder.addNumber(indexes[0], indexes[1]);
-                }
-                else if(Builder.isLetter(String.fromCharCode(e.charCode)))
-                {
-                    e.target.value = String.fromCharCode(e.charCode).toLowerCase();
-                }
+                Builder.crosswordArray[indexes[0]][indexes[1]].letter = e.target.value;
+                Builder.addNumber(indexes[0], indexes[1]);
             });
             elem.addEventListener("keydown", (e)=>{
-                console.log(e);
+                Builder.oldTargetId = e.target.id;
+                console.log(e.target.id);
+                Builder.charFlag = false;
+                if(e.target.value.length > 0)
+                    Builder.charFlag = true;
+                if (e.isComposing || e.keyCode === 229) {
+                    return;
+                    }
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
@@ -306,6 +318,7 @@ let Builder = {
                 }
                 else if(e.keyCode == 8)
                 {
+                    Builder.charFlag = true;
                     e.target.value = "";
                     Builder.deleteQuestion(Number(Builder.getB(indexes[0], indexes[1]).textContent));
                     Builder.getB(indexes[0], indexes[1]).innerHTML = "";
