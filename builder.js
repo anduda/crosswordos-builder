@@ -266,7 +266,7 @@ let Builder = {
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
                 e.target.value = e.target.value[0];
-                if(!isLetter(e.target.value))
+                if(!Builder.isLetter(e.target.value))
                 {
                     e.target.value = "";
                     return;
