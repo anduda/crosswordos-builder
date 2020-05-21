@@ -269,8 +269,7 @@ let Builder = {
                 }
                 else if(Builder.isLetter(e.key))
                 {
-                    //e.target.value = e.key.toLowerCase();
-                    return;
+                    e.target.value = e.key.toLowerCase();
                 }
                 else if(e.keyCode == 39)
                 {

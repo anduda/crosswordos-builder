@@ -144,9 +144,8 @@ let Solver = {
                 }
                 else if(Solver.isLetter(e.key))
                 {
-                    /*e.target.value = e.key.toLowerCase();
-                    Solver.solvingCrossword[indexes[0]][indexes[1]] = e.key;*/
-                    return;
+                    e.target.value = e.key.toLowerCase();
+                    Solver.solvingCrossword[indexes[0]][indexes[1]] = e.key;
                 }
                 else if(e.keyCode == 39)
                 {
