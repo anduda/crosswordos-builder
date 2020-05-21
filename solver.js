@@ -132,7 +132,7 @@ let Solver = {
 
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
-            elem.addEventListener("keydown", (e)=>
+            elem.addEventListener("keypress", (e)=>
             {
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
@@ -146,68 +146,72 @@ let Solver = {
                     e.target.value = String.fromCharCode(e.keyCode).toLowerCase();
                     Solver.solvingCrossword[indexes[0]][indexes[1]] = String.fromCharCode(e.keyCode);
                 }
-                else if(e.keyCode == 39)
-                {
-                    while(true)
+                elem.addEventListener("keydown", (e)=>{
+                    let indexes = e.target.id.split('-');
+                    indexes[0] = Number(indexes[0]);
+                    indexes[1] = Number(indexes[1]);
+                    if(e.keyCode == 39)
                     {
-                        indexes[1]++;
-                        if(indexes[1] == Solver.lenTD)
-                            return;
-                        if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
-                            break;
+                        while(true)
+                        {
+                            indexes[1]++;
+                            if(indexes[1] == Solver.lenTD)
+                                return;
+                            if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
+                                break;
+                        }
+                        let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
+                        if(cell)
+                            cell.focus();
                     }
-                    let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
-                    if(cell)
-                        cell.focus();
-                }
-                else if(e.keyCode == 40)
-                {
-                    while(true)
+                    else if(e.keyCode == 40)
                     {
-                        indexes[0]++;
-                        if(indexes[0] == Solver.lenTR)
-                            return;
-                        if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
-                            break;
+                        while(true)
+                        {
+                            indexes[0]++;
+                            if(indexes[0] == Solver.lenTR)
+                                return;
+                            if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
+                                break;
+                        }
+                        let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
+                        if(cell)
+                            cell.focus();
                     }
-                    let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
-                    if(cell)
-                        cell.focus();
-                }
-                else if(e.keyCode == 37)
-                {
-                    while(true)
+                    else if(e.keyCode == 37)
                     {
-                        indexes[1]--;
-                        if(indexes[1] < 0)
-                            return;
-                        if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
-                            break;
+                        while(true)
+                        {
+                            indexes[1]--;
+                            if(indexes[1] < 0)
+                                return;
+                            if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
+                                break;
+                        }
+                        let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
+                        if(cell)
+                            cell.focus();
                     }
-                    let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
-                    if(cell)
-                        cell.focus();
-                }
-                else if(e.keyCode == 38)
-                {
-                    while(true)
+                    else if(e.keyCode == 38)
                     {
-                        indexes[0]--;
-                        if(indexes[0] < 0)
-                            return;
-                        if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
-                            break;
+                        while(true)
+                        {
+                            indexes[0]--;
+                            if(indexes[0] < 0)
+                                return;
+                            if(!document.getElementById(indexes[0] + "-" + indexes[1]).disabled)
+                                break;
+                        }
+                        let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
+                        if(cell)
+                            cell.focus();
                     }
-                    let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
-                    if(cell)
-                        cell.focus();
-                }
-                else if(e.keyCode == 8)
-                {
-                    e.target.value = "";
-                    Solver.solvingCrossword[indexes[0]][indexes[1]] = 0;
-                }
-            });
+                    else if(e.keyCode == 8)
+                    {
+                        e.target.value = "";
+                        Solver.solvingCrossword[indexes[0]][indexes[1]] = 0;
+                    }
+                    });
         });
     },
 

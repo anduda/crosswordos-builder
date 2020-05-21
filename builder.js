@@ -256,21 +256,27 @@ let Builder = {
 
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
-            elem.addEventListener("keydown", (e)=>
+            elem.addEventListener("keypress", (e)=>
             {
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
-                if(!Builder.isLetter(e.target.value) && Builder.isLetter(String.fromCharCode(e.keyCode)))
+                if(e.target.value.length == 0 && Builder.isLetter(String.fromCharCode(e.charCode)))
                 {
-                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = String.fromCharCode(e.keyCode);
+                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = String.fromCharCode(e.charCode);
                     Builder.addNumber(indexes[0], indexes[1]);
                 }
-                else if(Builder.isLetter(String.fromCharCode(e.keyCode)))
+                else if(Builder.isLetter(String.fromCharCode(e.charCode)))
                 {
-                    e.target.value = String.fromCharCode(e.keyCode).toLowerCase();
+                    e.target.value = String.fromCharCode(e.charCode).toLowerCase();
                 }
-                else if(e.keyCode == 39)
+            });
+            elem.addEventListener("keydown", (e)=>{
+                console.log(e);
+                let indexes = e.target.id.split('-');
+                indexes[0] = Number(indexes[0]);
+                indexes[1] = Number(indexes[1]);
+                if(e.keyCode == 39)
                 {
                     indexes[1] += 1;
                     let cell = document.getElementById(indexes[0] + "-" + indexes[1]);
