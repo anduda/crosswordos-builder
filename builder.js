@@ -136,8 +136,7 @@ let Builder = {
     },
 
     isLetter: (c) =>{
-        let n = c.charCodeAt(0);
-        return (n >= 65 && n < 91) || (n >= 97 && n < 123);
+        return c.toLowerCase() != c.toUpperCase();
     },
 
     getB: (i, j) =>
@@ -262,14 +261,14 @@ let Builder = {
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
-                if(!Builder.isLetter(e.target.value) && Builder.isLetter(e.key))
+                if(!Builder.isLetter(e.target.value) && Builder.isLetter(String.fromCharCode(e.keyCode)))
                 {
-                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = e.key;
+                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = String.fromCharCode(e.keyCode);
                     Builder.addNumber(indexes[0], indexes[1]);
                 }
-                else if(Builder.isLetter(e.key))
+                else if(Builder.isLetter(String.fromCharCode(e.keyCode)))
                 {
-                    e.target.value = e.key.toLowerCase();
+                    e.target.value = String.fromCharCode(e.keyCode).toLowerCase();
                 }
                 else if(e.keyCode == 39)
                 {
