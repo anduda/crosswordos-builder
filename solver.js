@@ -46,9 +46,9 @@ let Solver = {
 
     renderQuestion: (isDown, number, question) =>{
         if(isDown)
-            document.getElementById("down").appendChild(Solver.generateQuestionField(number, "d"));
+            document.getElementById("down").appendChild(Solver.generateQuestionField(number, question));
         else
-            document.getElementById("across").appendChild(Solver.generateQuestionField(number, "a"));
+            document.getElementById("across").appendChild(Solver.generateQuestionField(number, question));
     },
 
     generateQuestionField: (number, question) =>{
@@ -120,6 +120,8 @@ let Solver = {
             Solver.crosswordArray = snapshot.val().crossword;
             Solver.acrossQuestions = snapshot.val().across;
             Solver.downQuestions = snapshot.val().down;
+            console.log(Solver.acrossQuestions);
+            console.log(Solver.downQuestions);
             Solver.lenTR = Solver.crosswordArray.length;
             Solver.lenTD = Solver.crosswordArray[0].length;
             document.body.dispatchEvent(Solver.bdLoadEvent);
@@ -130,22 +132,26 @@ let Solver = {
         return c.toLowerCase() != c.toUpperCase();
     },
 
+    emptyFlag: false,
+    symbolFlag: false,
+
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
-            elem.addEventListener("input", (e)=>
+            elem.addEventListener("keyup", (e)=>
             {
+                if(!Solver.symbolFlag || !Solver.emptyFlag)
+                    return;
+                e.target.value = e.target.value[0];
+                if(!Solver.isLetter(e.target.value))
+                {
+                    e.target.value = "";
+                    return;
+                }
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
-                if(!Solver.isLetter(e.target.value) && Solver.isLetter(String.fromCharCode(e.keyCode)))
-                {
-                    Solver.solvingCrossword[indexes[0]][indexes[1]] = String.fromCharCode(e.keyCode);
-                }
-                else if(Solver.isLetter(String.fromCharCode(e.keyCode)))
-                {
-                    e.target.value = String.fromCharCode(e.keyCode).toLowerCase();
-                    Solver.solvingCrossword[indexes[0]][indexes[1]] = String.fromCharCode(e.keyCode);
-                }
+                Solver.solvingCrossword[indexes[0]][indexes[1]] = e.target.value;
+                });
                 elem.addEventListener("keydown", (e)=>{
                     let indexes = e.target.id.split('-');
                     indexes[0] = Number(indexes[0]);
@@ -210,8 +216,12 @@ let Solver = {
                     {
                         e.target.value = "";
                         Solver.solvingCrossword[indexes[0]][indexes[1]] = 0;
+                    }
+                    else
+                    {
+                        Solver.symbolFlag = true;
+                        Solver.emptyFlag = e.target.value.length == 0
                     }});
-                });
         });
     },
 
