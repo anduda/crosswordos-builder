@@ -127,7 +127,8 @@ let Solver = {
     },
 
     isLetter: (c) =>{
-        return c.toLowerCase() != c.toUpperCase();
+        let n = c.charCodeAt(0);
+        return (n >= 65 && n < 91) || (n >= 97 && n < 123);
     },
 
     addEventsOnCells: () =>{
