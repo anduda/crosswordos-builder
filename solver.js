@@ -210,8 +210,8 @@ let Solver = {
                     {
                         e.target.value = "";
                         Solver.solvingCrossword[indexes[0]][indexes[1]] = 0;
-                    }
-                    });
+                    }});
+                });
         });
     },
 
