@@ -262,14 +262,14 @@ let Builder = {
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
-                if(!Builder.isLetter(e.target.value) && Builder.isLetter(String.fromCharCode(e.keyCode)))
+                if(!Builder.isLetter(e.target.value) && Builder.isLetter(e.key))
                 {
-                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = String.fromCharCode(e.keyCode);
+                    Builder.crosswordArray[indexes[0]][indexes[1]].letter = e.key;
                     Builder.addNumber(indexes[0], indexes[1]);
                 }
-                else if(Builder.isLetter(String.fromCharCode(e.keyCode)))
+                else if(Builder.isLetter(e.key))
                 {
-                    e.target.value = String.fromCharCode(e.keyCode).toLowerCase();
+                    e.target.value = e.key.toLowerCase();
                 }
                 else if(e.keyCode == 39)
                 {

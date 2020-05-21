@@ -138,14 +138,14 @@ let Solver = {
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
-                if(!Solver.isLetter(e.target.value) && Solver.isLetter(String.fromCharCode(e.keyCode)))
+                if(!Solver.isLetter(e.target.value) && Solver.isLetter(e.key))
                 {
-                    Solver.solvingCrossword[indexes[0]][indexes[1]] = String.fromCharCode(e.keyCode);
+                    Solver.solvingCrossword[indexes[0]][indexes[1]] = e.key;
                 }
-                else if(Solver.isLetter(String.fromCharCode(e.keyCode)))
+                else if(Solver.isLetter(e.key))
                 {
-                    e.target.value = String.fromCharCode(e.keyCode).toLowerCase();
-                    Solver.solvingCrossword[indexes[0]][indexes[1]] = String.fromCharCode(e.keyCode);
+                    e.target.value = e.key.toLowerCase();
+                    Solver.solvingCrossword[indexes[0]][indexes[1]] = e.key;
                 }
                 else if(e.keyCode == 39)
                 {
