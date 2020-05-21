@@ -253,38 +253,30 @@ let Builder = {
             }
         }
     },
-    charFlag: false,
-    oldTargetId: "",
+    emptyFlag: false,
+    symbolFlag: false,
 
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
             elem.addEventListener("keyup", (e)=>
             {
-                console.log(Builder.oldTargetId);
-                console.log(e.target.id);
-                if(Builder.oldTargetId != e.target.id || Builder.charFlag)
+                if(!Builder.symbolFlag || !Builder.emptyFlag)
                     return;
-                if (e.isComposing || e.keyCode === 229) {
-                return;
-                }
-                if(e.target.value.length > 1) {
-                    e.target.value = e.target.value.substring(0, 1);
-                  }
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
+                e.target.value = e.target.value[0];
+                if(!isLetter(e.target.value))
+                {
+                    e.target.value = "";
+                    return;
+                }
                 Builder.crosswordArray[indexes[0]][indexes[1]].letter = e.target.value;
                 Builder.addNumber(indexes[0], indexes[1]);
             });
             elem.addEventListener("keydown", (e)=>{
-                Builder.oldTargetId = e.target.id;
-                console.log(e.target.id);
-                Builder.charFlag = false;
-                if(e.target.value.length > 0)
-                    Builder.charFlag = true;
-                if (e.isComposing || e.keyCode === 229) {
-                    return;
-                    }
+                Builder.symbolFlag = false;
+                Builder.emptyFlag = false;
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
@@ -323,6 +315,11 @@ let Builder = {
                     Builder.deleteQuestion(Number(Builder.getB(indexes[0], indexes[1]).textContent));
                     Builder.getB(indexes[0], indexes[1]).innerHTML = "";
                     Builder.deleteNumber(indexes[0], indexes[1]);
+                }
+                else
+                {
+                    Builder.symbolFlag = true;
+                    Builder.emptyFlag = e.target.value.length == 0
                 }
             });
         });
