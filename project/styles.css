@@ -1,6 +1,5 @@
 *{
     font-size: 2vh;
-    font-family: cursive;
 }
 
 h1{
@@ -8,7 +7,7 @@ h1{
 }
 
 table {
-    font-family: 'Comfortaa', cursive;
+    /*font-family: 'Comfortaa', cursive;*/
 	color: #3d1718;
     border-collapse: separate;
     border-spacing: 3px;
@@ -79,7 +78,6 @@ nav {
 }
 
 nav a {
-    font-family: cursive;
     color: black;
     text-align: center;
     padding: 14px 16px;
@@ -206,7 +204,6 @@ main{
 }
 
 label{
-    font-family: cursive;
     font-size: xx-large;
     text-shadow: 0px 10px 10px white;
 }
@@ -277,7 +274,6 @@ label{
 }
 
 .logreg-form .input-wrapper:before {
-    font-family: FontAwesome;
     margin: auto;
     font-size: 5vh;
     color: rgb(7, 165, 118);
