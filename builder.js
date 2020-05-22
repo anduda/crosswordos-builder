@@ -404,11 +404,11 @@ let Builder = {
     saveToDb: () =>
     {
         Builder.getQuestionsForDb();
-        alert("Crossword id is " + (firebase.database().ref().push({
+        window.location.hash = "/solver/" + (firebase.database().ref().push({
                     across: Builder.acrossQuestions,
                     down: Builder.downQuestions,
                     crossword: Builder.crosswordArray
-            })).key);
+            })).key;
     },
 
     findCrossword: (e) =>
