@@ -174,7 +174,7 @@ let Solver = {
 
     emptyFlag: false,
     symbolFlag: false,
-
+    previousLetter: "",
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
             elem.parentElement.style.height = elem.parentElement.offsetWidth + 'px';
@@ -182,6 +182,7 @@ let Solver = {
             {
                 if(e.code == "Space")
                 {
+                    e.target.value = Solver.previousLetter;
                     Solver.isVertical = !Solver.isVertical;
                     e.target.value = "";
                     return;
@@ -279,7 +280,8 @@ let Solver = {
                     else
                     {
                         Solver.symbolFlag = true;
-                        Solver.emptyFlag = e.target.value.length == 0
+                        Solver.emptyFlag = e.target.value.length == 0;
+                        Solver.previousLetter = e.target.value;
                     }});
         });
     },
