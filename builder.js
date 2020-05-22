@@ -293,14 +293,16 @@ let Builder = {
         }
     },
 
+    previousLetter: "",
+
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
             elem.addEventListener("keyup", (e)=>
             {
                 if(e.code == "Space")
                 {
+                    e.target.value = Builder.previousLetter;
                     Builder.isVertical = !Builder.isVertical;
-                    e.target.value = "";
                     return;
                 }
                 let indexes = e.target.id.split('-');
@@ -373,6 +375,7 @@ let Builder = {
                 {
                     Builder.symbolFlag = true;
                     Builder.emptyFlag = e.target.value.length == 0
+                    Builder.previousLetter = e.target.value;
                 }
             });
         });

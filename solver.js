@@ -2,7 +2,7 @@ let Solver = {
     render: async () => 
     {
         return `<nav>
-        <a href="#/Solver">Create new</a>
+        <a href="#/builder">Create new</a>
         <div class="search-container">
           <form id="find-form">
             <input type="text" placeholder="Find crosswords..">
