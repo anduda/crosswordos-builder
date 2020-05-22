@@ -2,14 +2,14 @@ let Solver = {
     render: async () => 
     {
         return `<nav>
-        <a href="#/builder">Create new</a>
+        <a href="#/Solver">Create new</a>
         <div class="search-container">
           <form id="find-form">
             <input type="text" placeholder="Find crosswords..">
             <button type="submit">Find</button>
           </form>
         </div>
-        <a href="#/login">Log out</a>
+        <a href="#/login" id="logout">Log out</a>
     </nav>
 
     <main>
@@ -124,12 +124,52 @@ let Solver = {
             console.log(Solver.downQuestions);
             Solver.lenTR = Solver.crosswordArray.length;
             Solver.lenTD = Solver.crosswordArray[0].length;
-            document.body.dispatchEvent(Solver.bdLoadEvent);
+            document.getElementsByTagName("main")[0].dispatchEvent(Solver.bdLoadEvent);
         });
     },
 
     isLetter: (c) =>{
+        console.log(c);
+        c = String(c);
         return c.toLowerCase() != c.toUpperCase();
+    },
+
+    isVertical: false,
+
+    goNextCell: (i, j) =>
+    {
+        if(!Solver.isVertical)
+        {
+            j += 1;
+            let cell = document.getElementById(i + "-" + j);
+            if(cell)
+                cell.focus();
+        }
+        else
+        {
+            i += 1;
+            let cell = document.getElementById(i + "-" + j);
+            if(cell)
+                cell.focus();
+        }
+    },
+
+    goBackSell: (i, j) =>
+    {
+        if(!Solver.isVertical)
+        {
+            j -= 1;
+            let cell = document.getElementById(i + "-" + j);
+            if(cell)
+                cell.focus();
+        }
+        else
+        {
+            i -= 1;
+            let cell = document.getElementById(i + "-" + j);
+            if(cell)
+                cell.focus();
+        }
     },
 
     emptyFlag: false,
@@ -137,22 +177,39 @@ let Solver = {
 
     addEventsOnCells: () =>{
         document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
+            elem.parentElement.style.height = elem.parentElement.offsetWidth + 'px';
             elem.addEventListener("keyup", (e)=>
             {
-                if(!Solver.symbolFlag || !Solver.emptyFlag)
-                    return;
-                e.target.value = e.target.value[0];
-                if(!Solver.isLetter(e.target.value))
+                if(e.code == "Space")
                 {
+                    Solver.isVertical = !Solver.isVertical;
                     e.target.value = "";
                     return;
                 }
                 let indexes = e.target.id.split('-');
                 indexes[0] = Number(indexes[0]);
                 indexes[1] = Number(indexes[1]);
+                if(!Solver.symbolFlag)
+                {
+                    return;
+                }
+                if(!Solver.emptyFlag)
+                {
+                    Solver.goNextCell(indexes[0], indexes[1]);
+                    return;
+                }
+                if(!Solver.isLetter(e.target.value))
+                {
+                    e.target.value = "";
+                    return;
+                }
+                e.target.value = e.target.value[0];
                 Solver.solvingCrossword[indexes[0]][indexes[1]] = e.target.value;
+                Solver.goNextCell(indexes[0], indexes[1]);
                 });
                 elem.addEventListener("keydown", (e)=>{
+                    Solver.emptyFlag = false;
+                    Solver.symbolFlag = false;
                     let indexes = e.target.id.split('-');
                     indexes[0] = Number(indexes[0]);
                     indexes[1] = Number(indexes[1]);
@@ -214,6 +271,8 @@ let Solver = {
                     }
                     else if(e.keyCode == 8)
                     {
+                        if(e.target.value.length == 0)
+                            Solver.goBackSell(indexes[0], indexes[1]);
                         e.target.value = "";
                         Solver.solvingCrossword[indexes[0]][indexes[1]] = 0;
                     }
@@ -225,10 +284,39 @@ let Solver = {
         });
     },
 
+    addEventsOnQuestion: () =>{
+        document.querySelectorAll("ol p").forEach(elem =>{
+            elem.addEventListener("click", () =>
+            {
+                var number = elem.previousSibling.textContent;
+                console.log(number);
+                let i1 = 0, j1 = 0;
+                for(let i = 0; i < Solver.lenTR; i++)
+                {
+                    for(let j = 0; j < Solver.lenTD; j++)
+                    {
+                        var cell = document.getElementById(i + "-" + j);
+                        console.log(cell.previousSibling.textContent);
+                        if(cell.previousSibling.textContent + "." == number)
+                        {
+                            document.getElementById(i + "-" + j).focus();
+                            return;
+                        }
+
+                    }
+                }
+            });
+        });
+    },
+
     after_render: async (id) =>
     {
-        document.body.addEventListener('loaded', () =>{
+        document.getElementsByTagName("main")[0].addEventListener('loaded', () =>{
             Solver.renderTable();
+            document.getElementById("logout").addEventListener('click', () =>
+            {
+                firebase.auth().signOut();
+            });
             Solver.addEventsOnCells();
             document.querySelector(".save-button").addEventListener("click", () =>
             {
@@ -237,20 +325,25 @@ let Solver = {
                 {
                     for(let j = 0; j < Solver.lenTD; j++)
                     {
-                        if(Solver.crosswordArray[i][j].letter != Solver.solvingCrossword[i][j])
+                        if(Solver.isLetter(Solver.crosswordArray[i][j].letter))
                         {
-                            flag = false;
-                            break;
+                            var cell = document.getElementById(i + "-" + j);
+                            if(Solver.crosswordArray[i][j].letter != Solver.solvingCrossword[i][j])
+                            {
+                                cell.value = Solver.crosswordArray[i][j].letter;
+                                cell.style.color = "#FF0000"
+                                cell.disabled = true;
+                            }
+                            else
+                            {
+                                cell.style.color = "#00FF00"
+                                cell.disabled = true;
+                            }
                         }
                     }
-                    if(!flag)
-                    {
-                        alert("НЕ совсем все правильно");
-                        return;
-                    }
                 }
-                alert("Все правильно!");
             });
+            Solver.addEventsOnQuestion();
         });
         Solver.getFromDb(id);
         

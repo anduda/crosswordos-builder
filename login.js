@@ -20,7 +20,11 @@ let Login = {
           const password = document.querySelector("#password").value;
           e.preventDefault();
           firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-              window.location.hash = "/builder";
+            firebase.auth().onAuthStateChanged(firebaseUser => {
+              if(firebaseUser){
+                  window.location.hash = '/builder';
+              }
+          });
           }).catch(function(error) {
               alert(error.message);
           });
