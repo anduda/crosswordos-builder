@@ -71,50 +71,19 @@ let Solver = {
         let indexes = startCell.id.split('-');
         indexes[0] = Number(indexes[0]);
         indexes[1] = Number(indexes[1]);
-        while(true)
-        {
-            if(orientation == "down")
-            {
-                indexes[0] += 1;
-                if(indexes[0] < Solver.lenTR)
-                {
-                    console.log(indexes);
-                    let cell = document.getElementById(indexes[0] + '-' + indexes[1]);
-                    if(!cell.disabled)
-                    {
-                        cells.push(cell.parentNode);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-            if(orientation == "across")
-            {
-                indexes[1] += 1;
-                if(indexes[1] < Solver.lenTD)
-                {
 
-                    let cell = document.getElementById(indexes[0] + '-' + indexes[1]);
-                    console.log(cell);
-                    if(!cell.disabled)
-                    {
-                        cells.push(cell.parentNode);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
+        if(orientation == "down")
+        {
+            while(++indexes[0] < Solver.lenTR && !document.getElementById(indexes[0] + '-' + indexes[1]).disabled)
+            {
+                cells.push(document.getElementById(indexes[0] + '-' + indexes[1]).parentNode);
+            }
+        }
+        if(orientation == "across")
+        {
+            while(++indexes[1] < Solver.lenTD && !document.getElementById(indexes[0] + '-' + indexes[1]).disabled)
+            {
+                cells.push(document.getElementById(indexes[0] + '-' + indexes[1]).parentNode);
             }
         }
         return cells;
@@ -260,7 +229,7 @@ let Solver = {
                 if(!Solver.emptyFlag)
                 {
                     Solver.goNextCell(indexes[0], indexes[1]);
-                    return;
+                    return;4
                 }
                 if(!Solver.isLetter(e.target.value))
                 {
