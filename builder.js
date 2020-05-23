@@ -401,6 +401,7 @@ let Builder = {
             });
     },
 
+
     saveToDb: () =>
     {
         Builder.getQuestionsForDb();
@@ -417,63 +418,49 @@ let Builder = {
         window.location.hash = "/solver/" + document.getElementById("find-input").value;    
     },
 
+    isRowEmprty: (j) =>
+    {
+        let isNotEmpty = false;
+        for(let i = 0; i < Builder.lenTD; i++)
+        {
+            if(Builder.crosswordArray[j][i].letter != 0)
+            {
+                isNotEmpty = true;
+                break;
+            }
+        }
+        return !isNotEmpty;
+    },
+
+    isColumnEmpty: (j)=>
+    {
+        let isNotEmpty = false;
+        for(let i = 0; i < Builder.lenTR; i++)
+        {
+            if(Builder.crosswordArray[i][j].letter != 0)
+            {
+                isNotEmpty = true;
+                break;
+            }
+        }
+        return !isNotEmpty;
+    },
+
     deleteEmptyRowsAndColumns: ()=>
     {
         while(true)
         {
-            let isNotEmpty = false;
-            for(let i = 0; i < Builder.lenTD; i++)
-            {
-                if(Builder.crosswordArray[0][i].letter != 0)
-                {
-                    isNotEmpty = true;
-                    break;
-                }
-            }
-            if(!isNotEmpty)
+            if(Builder.isRowEmprty(0))
             {
                 Builder.lenTR--;
                 Builder.crosswordArray.shift();   
             }
-            else
-            {
-                break;
-            }
-        }
-        while(true)
-        {
-            let isNotEmpty = false;
-            for(let i = 0; i < Builder.lenTD; i++)
-            {
-                if(Builder.crosswordArray[Builder.crosswordArray.length-1][i].letter != 0)
-                {
-                    isNotEmpty = true;
-                    break;
-                }
-            }
-            if(!isNotEmpty)
+            else if(Builder.isRowEmprty(Builder.lenTR - 1))
             {
                 Builder.lenTR--;
-                Builder.crosswordArray.pop();   
+                Builder.crosswordArray.pop(); 
             }
-            else
-            {
-                break;
-            }
-        }
-
-        while(true)
-        {
-            let isNotEmpty = false;
-            for(let i = 0; i < Builder.lenTR; i++)
-            {
-                if(Builder.crosswordArray[i][0].letter != 0)
-                {
-                    isNotEmpty = true;
-                    break;
-                }
-            }
-            if(!isNotEmpty)
+            else if(Builder.isColumnEmpty(0))
             {
                 for(let i = 0; i < Builder.lenTR; i++)
                 {
@@ -481,29 +468,13 @@ let Builder = {
                 }      
                 Builder.lenTD--;
             }
-            else
-            {
-                break;
-            }
-        }
-        while(true)
-        {
-            let isNotEmpty = false;
-            for(let i = 0; i < Builder.lenTR; i++)
-            {
-                if(Builder.crosswordArray[i][Builder.crosswordArray[i].length - 1].letter != 0)
-                {
-                    isNotEmpty = true;
-                    break;
-                }
-            }
-            if(!isNotEmpty)
+            else if(Builder.isColumnEmpty(Builder.lenTD - 1))
             {
                 for(let i = 0; i < Builder.lenTR; i++)
                 {
                     Builder.crosswordArray[i].pop();
                 }
-                Builder.lenTD--;      
+                Builder.lenTD--;
             }
             else
             {

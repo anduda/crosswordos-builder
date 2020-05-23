@@ -46,16 +46,78 @@ let Solver = {
 
     renderQuestion: (isDown, number, question) =>{
         if(isDown)
-            document.getElementById("down").appendChild(Solver.generateQuestionField(number, question));
+            document.getElementById("down").appendChild(Solver.generateQuestionField(isDown, number, question));
         else
-            document.getElementById("across").appendChild(Solver.generateQuestionField(number, question));
+            document.getElementById("across").appendChild(Solver.generateQuestionField(isDown, number, question));
     },
 
-    generateQuestionField: (number, question) =>{
+    generateQuestionField: (isDown, number, question) =>{
         let field = document.createElement('div');
         field.setAttribute('class', 'question');
-        field.innerHTML = `<span>${number}</span><p>${question}</p>`
+        if(isDown)
+            field.innerHTML = `<span >${number}</span><p data-number="${number.split('.')[0]}" data-orientation="down">${question}</p>`
+        else
+        field.innerHTML = `<span >${number}</span><p data-number="${number.split('.')[0]}" data-orientation="across">${question}</p>`
         return field;
+    },
+
+    getQuestionCells: (number, orientation) => {
+        let startCell = document.getElementsByName(number)[0];
+        console.log(startCell);
+        let cells = [];
+        if(startCell.disabled)
+            return cells;
+        cells.push(startCell.parentNode);
+        let indexes = startCell.id.split('-');
+        indexes[0] = Number(indexes[0]);
+        indexes[1] = Number(indexes[1]);
+        while(true)
+        {
+            if(orientation == "down")
+            {
+                indexes[0] += 1;
+                if(indexes[0] < Solver.lenTR)
+                {
+                    console.log(indexes);
+                    let cell = document.getElementById(indexes[0] + '-' + indexes[1]);
+                    if(!cell.disabled)
+                    {
+                        cells.push(cell.parentNode);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if(orientation == "across")
+            {
+                indexes[1] += 1;
+                if(indexes[1] < Solver.lenTD)
+                {
+
+                    let cell = document.getElementById(indexes[0] + '-' + indexes[1]);
+                    console.log(cell);
+                    if(!cell.disabled)
+                    {
+                        cells.push(cell.parentNode);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        return cells;
     },
 
     renderTable: () => {
@@ -74,12 +136,13 @@ let Solver = {
                 Solver.solvingCrossword[i][j] = 0;
                 if(!Solver.crosswordArray[i][j].letter)
                 {
-                    document.getElementById(i + "-" + j ).parentNode.style.background = "#000000";
+                    document.getElementById(i + "-" + j ).parentNode.classList.add("emptyCell");
                     document.getElementById(i + "-" + j ).disabled = true;
                 }
                 if(Solver.crosswordArray[i][j].number)
                 {
                     document.getElementById(i + "-" + j ).previousSibling.textContent = Solver.crosswordArray[i][j].number;
+                    document.getElementById(i + "-" + j).name = Solver.crosswordArray[i][j].number;
                 }
             }
         }
@@ -109,7 +172,7 @@ let Solver = {
 
     renderTD: (i, j) => {
         return `
-        <td class="puzzle_cell"><b></b><input id="${i}-${j}" type="text" class="puzzle_cell_input" maxlength="1"></td>
+        <td class="puzzle_cell"><b></b><input id="${i}-${j}" type="text" maxlength="1"></td>
         `
     },
 
@@ -176,7 +239,7 @@ let Solver = {
     symbolFlag: false,
     previousLetter: "",
     addEventsOnCells: () =>{
-        document.querySelectorAll(".puzzle_cell_input").forEach(elem =>{
+        document.querySelectorAll(".puzzle_cell input").forEach(elem =>{
             elem.parentElement.style.height = elem.parentElement.offsetWidth + 'px';
             elem.addEventListener("keyup", (e)=>
             {
@@ -290,25 +353,25 @@ let Solver = {
         document.querySelectorAll("ol p").forEach(elem =>{
             elem.addEventListener("click", () =>
             {
-                var number = elem.previousSibling.textContent;
-                console.log(number);
-                let i1 = 0, j1 = 0;
-                for(let i = 0; i < Solver.lenTR; i++)
+                var number = elem.dataset.number;
+                var orientation = elem.dataset.orientation;
+                let cells = Solver.getQuestionCells(number, orientation);
+                for(let i = 0; i < cells.length; i++)
                 {
-                    for(let j = 0; j < Solver.lenTD; j++)
-                    {
-                        var cell = document.getElementById(i + "-" + j);
-                        console.log(cell.previousSibling.textContent);
-                        if(cell.previousSibling.textContent + "." == number)
-                        {
-                            document.getElementById(i + "-" + j).focus();
-                            return;
-                        }
-
-                    }
+                    cells[i].classList.add("findQuestion");
                 }
+                Solver.sleep(1000).then(() =>{
+                for(let i = 0; i < cells.length; i++)
+                {
+                    cells[i].classList.remove("findQuestion");
+                }});
+                
             });
         });
+    },
+
+    sleep: (time) => {
+        return new Promise((resolve) => setTimeout(resolve, time));
     },
 
     after_render: async (id) =>
@@ -330,15 +393,18 @@ let Solver = {
                         if(Solver.isLetter(Solver.crosswordArray[i][j].letter))
                         {
                             var cell = document.getElementById(i + "-" + j);
-                            if(Solver.crosswordArray[i][j].letter != Solver.solvingCrossword[i][j])
+                            if(!Solver.crosswordArray[i][j].letter.length || !Solver.solvingCrossword[i][j].length || Solver.crosswordArray[i][j].letter.toLowerCase() != Solver.solvingCrossword[i][j].toLowerCase())
                             {
+                                console.log(cell);
+                                cell.classList.add("wrongLetter");
                                 cell.value = Solver.crosswordArray[i][j].letter;
-                                cell.style.color = "#FF0000"
+                                //console.log(cell.classList);
                                 cell.disabled = true;
                             }
                             else
                             {
-                                cell.style.color = "#00FF00"
+                                console.log(cell.classList);
+                                cell.classList.add("notWrongLetter");
                                 cell.disabled = true;
                             }
                         }
